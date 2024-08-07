@@ -6,12 +6,12 @@ use Exception;
 
 class ResponseService
 {
-    public function handle(callable $function)
+    public function handle(callable $callable)
     {
         try {
             return response()->json([
                 'success' => true,
-                'data' => TransactionService::handle($function),
+                'data' => (new TransactionService())->handle($callable),
             ]);
         } catch (Exception $exception) {
             return response()->json([

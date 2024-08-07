@@ -10,7 +10,7 @@ class TransactionService
      * @param callable $callable
      * @return mixed
      */
-    public static function handle(callable $callable): mixed
+    public function handle(callable $callable): mixed
     {
         return DB::transaction(function () use ($callable) {
             return $callable();
